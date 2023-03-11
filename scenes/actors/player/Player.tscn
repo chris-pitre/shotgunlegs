@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckpchnudr4ejb"]
+
+[ext_resource type="Script" path="res://scenes/actors/player/Player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c8344x3k4cv36" path="res://assets/icon.png" id="2"]
+[ext_resource type="Script" path="res://scenes/actors/player/Cursor.gd" id="3"]
+
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(32, 64)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 2
+script = ExtResource("1")
+JUMP_FORCE = -1000
+MAX_SPEED = 400
+ACCELERATION = 40
+FRICTION = 40
+GRAVITY = 20
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 1)
+sprite_frames = SubResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Cursor" type="Node2D" parent="."]
+position = Vector2(0, -64)
+script = ExtResource("3")
+
+[node name="Icon" type="Sprite2D" parent="Cursor"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_speed = 10.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

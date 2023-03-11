@@ -17,6 +17,7 @@ config/icon="res://assets/icon.png"
 
 [display]
 
+window/size/initial_position_type=0
 window/stretch/mode="viewport"
 
 [gui]
@@ -65,4 +66,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+textures/decals/filter=0
+textures/light_projectors/filter=0
 environment/defaults/default_environment="res://scenes/default_env.tres"

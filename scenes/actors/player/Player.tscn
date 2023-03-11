@@ -1,17 +1,59 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckpchnudr4ejb"]
+[gd_scene load_steps=16 format=3 uid="uid://1y8fkofflo3x"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://c8344x3k4cv36" path="res://assets/icon.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b2i21kdf3gfwo" path="res://assets/dudesprites/dudeidle/dudeidle1.png" id="2_yg61y"]
 [ext_resource type="Script" path="res://scenes/actors/player/Cursor.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://db83a4j06d6nw" path="res://assets/dudesprites/dudeidle/dudeidle2.png" id="3_mwjgo"]
+[ext_resource type="Texture2D" uid="uid://cutnrb3kgkyar" path="res://assets/dudesprites/duderoll/duderoll1.png" id="4_rcycg"]
+[ext_resource type="Texture2D" uid="uid://fm3mljfw2lbj" path="res://assets/dudesprites/duderoll/duderoll2.png" id="5_xy0rk"]
+[ext_resource type="Texture2D" uid="uid://cj5hlrjtrqtfl" path="res://assets/dudesprites/duderoll/duderoll3.png" id="6_ldlbo"]
+[ext_resource type="Texture2D" uid="uid://ctbfpqv1rhohd" path="res://assets/dudesprites/duderoll/duderoll4.png" id="7_7fiqc"]
+[ext_resource type="Texture2D" uid="uid://dfbluaxii6san" path="res://assets/dudesprites/duderoll/duderoll5.png" id="8_uuo1d"]
+[ext_resource type="Texture2D" uid="uid://oedu4om5eg1y" path="res://assets/dudesprites/duderoll/duderoll6.png" id="9_mlwbg"]
+[ext_resource type="Texture2D" uid="uid://cor6o3ep5gllx" path="res://assets/dudesprites/duderoll/duderoll7.png" id="10_ktrk0"]
+[ext_resource type="Texture2D" uid="uid://hl5gbided3o7" path="res://assets/dudesprites/duderoll/duderoll8.png" id="11_40uip"]
 
 [sub_resource type="SpriteFrames" id="2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2")
+"texture": ExtResource("2_yg61y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mwjgo")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rcycg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xy0rk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ldlbo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7fiqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uuo1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mlwbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ktrk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_40uip")
+}],
+"loop": true,
+"name": &"roll",
 "speed": 5.0
 }]
 
@@ -27,9 +69,13 @@ ACCELERATION = 40
 FRICTION = 40
 GRAVITY = 20
 
+[node name="SlopeRayCast" type="RayCast2D" parent="."]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 1)
+position = Vector2(1, -7)
+scale = Vector2(0.621094, 0.621094)
 sprite_frames = SubResource("2")
+animation = &"roll"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")

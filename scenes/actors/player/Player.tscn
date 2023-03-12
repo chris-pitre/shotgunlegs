@@ -62,8 +62,11 @@ size = Vector2(32, 64)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
+floor_constant_speed = true
+floor_block_on_wall = false
+floor_max_angle = 0.872665
 script = ExtResource("1")
-JUMP_FORCE = -1000
+JUMP_FORCE = -750
 MAX_SPEED = 400
 ACCELERATION = 40
 FRICTION = 40

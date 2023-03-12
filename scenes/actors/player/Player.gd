@@ -13,20 +13,17 @@ const SPEED_CAP = 80000
 
 @onready var animatedSprite = $AnimatedSprite2D
 @onready var timer = $Timer
-@onready var slopeRayCast = $SlopeRayCast
 
 var AMMO = 0
 var cursorVector = Vector2.ZERO
 var onSlope = false
-var steepness = 0
 
 func _ready() -> void:
 	animatedSprite.play("idle")
 
 func _physics_process(_delta) -> void:
 	#Handling slopes
-	steepness = get_steepness()
-	if abs(steepness) > 44.0:
+	if rad_to_deg(get_floor_angle()) > 44:
 		onSlope = true
 	else:
 		onSlope = false
@@ -43,6 +40,7 @@ func _physics_process(_delta) -> void:
 	var input = Vector2.ZERO
 	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	
+	print(get_floor_normal())
 	apply_gravity()
 	do_movement(input.x)
 	shoot_and_reload()
@@ -81,10 +79,6 @@ func shoot() -> void:
 	AMMO -= 1
 	UI.set_shells(AMMO)
 
-## Gets angle of slope from raycast
-func get_steepness() -> float:
-	return (-90) - rad_to_deg(slopeRayCast.get_collision_normal().angle())
-
 ## Handles if player is able to shoot and reloads gun on the ground
 func shoot_and_reload() -> void:
 	if AMMO > 0:
@@ -104,8 +98,5 @@ func do_movement(input) -> void:
 			else:
 				apply_acceleration(input)
 		else:
-			if steepness < 0:
-				velocity.x = move_toward(velocity.x, 0.75 * SPEED_CAP, ACCELERATION)
-			elif steepness > 0:
-				velocity.x = move_toward(velocity.x, -0.75 * SPEED_CAP, ACCELERATION)
+			velocity.x = move_toward(velocity.x, get_floor_normal().x * SPEED_CAP, FRICTION)
 			velocity.y = move_toward(velocity.y, 1 * 800000, GRAVITY)

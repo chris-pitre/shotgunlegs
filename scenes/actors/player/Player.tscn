@@ -72,8 +72,6 @@ ACCELERATION = 40
 FRICTION = 40
 GRAVITY = 20
 
-[node name="SlopeRayCast" type="RayCast2D" parent="."]
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -7)
 scale = Vector2(0.621094, 0.621094)

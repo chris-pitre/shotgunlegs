@@ -17,6 +17,7 @@ const SPEED_CAP = 80000
 @onready var slopeTimer = $SlopeTimer
 @onready var shotgunFire = $SFX/ShotgunFire
 @onready var shotgunReload = $SFX/ShotgunReload
+@onready var camera = $PlayerCamera
 
 var AMMO = 0
 var cursorVector = Vector2.ZERO
@@ -43,7 +44,9 @@ func _physics_process(_delta) -> void:
 
 	var input = Vector2.ZERO
 	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-
+	cursorVector = get_global_mouse_position() - position
+	
+	move_camera()
 	apply_gravity()
 	do_movement(input.x)
 	shoot_and_reload()
@@ -69,7 +72,6 @@ func apply_acceleration(amount) -> void:
 
 ## Shoots shotgun and applies force in opposite direction
 func shoot() -> void:
-	cursorVector = get_global_mouse_position() - position
 	velocity += cursorVector.normalized() * JUMP_FORCE
 	shotgunFire.play()
 	for _i in range(10):	
@@ -108,3 +110,7 @@ func do_movement(input) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, get_floor_normal().x * SPEED_CAP, FRICTION)
 			velocity.y = move_toward(velocity.y, 1 * SPEED_CAP, GRAVITY)
+			
+## Camera position
+func move_camera() -> void:
+	camera.global_position = global_position + (cursorVector / 6)

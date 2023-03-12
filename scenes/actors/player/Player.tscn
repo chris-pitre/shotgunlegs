@@ -190,7 +190,9 @@ script = ExtResource("3")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PlayerCamera" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="SFX" type="Node2D" parent="."]

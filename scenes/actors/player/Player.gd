@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 const bulletPath = preload('res://scenes/actors/player/Bullet.tscn')
 const SPEED_CAP = 80000
 
@@ -14,6 +15,8 @@ const SPEED_CAP = 80000
 @onready var animatedSprite = $AnimatedSprite2D
 @onready var gunTimer = $GunTimer
 @onready var slopeTimer = $SlopeTimer
+@onready var shotgunFire = $SFX/ShotgunFire
+@onready var shotgunReload = $SFX/ShotgunReload
 
 var AMMO = 0
 var cursorVector = Vector2.ZERO
@@ -64,10 +67,11 @@ func apply_acceleration(amount) -> void:
 	print(MAX_SPEED)
 	velocity.x = move_toward(velocity.x, MAX_SPEED * sign(amount), ACCELERATION)
 
-## Shoots shotgun and applys force in opposite direction
+## Shoots shotgun and applies force in opposite direction
 func shoot() -> void:
 	cursorVector = get_global_mouse_position() - position
 	velocity += cursorVector.normalized() * JUMP_FORCE
+	shotgunFire.play()
 	for _i in range(10):	
 		var bullet = bulletPath.instantiate()
 		bullet.position = $Marker2D.global_position
@@ -86,6 +90,7 @@ func shoot_and_reload() -> void:
 		if gunTimer.is_stopped() and Input.is_action_just_pressed("mouse1"):
 			shoot()
 	if  AMMO < MAX_AMMO and is_on_floor() and gunTimer.is_stopped() and not onSlope:
+		shotgunReload.play()
 		AMMO = MAX_AMMO
 		UI.reload_shells()
 
@@ -102,4 +107,4 @@ func do_movement(input) -> void:
 				animatedSprite.play("walk")
 		else:
 			velocity.x = move_toward(velocity.x, get_floor_normal().x * SPEED_CAP, FRICTION)
-			velocity.y = move_toward(velocity.y, 1 * 800000, GRAVITY)
+			velocity.y = move_toward(velocity.y, 1 * SPEED_CAP, GRAVITY)

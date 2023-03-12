@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://1y8fkofflo3x"]
+[gd_scene load_steps=42 format=3 uid="uid://1y8fkofflo3x"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://c8344x3k4cv36" path="res://assets/icon.png" id="2"]
@@ -37,6 +37,8 @@
 [ext_resource type="Texture2D" uid="uid://djhoigi51rpkc" path="res://assets/dudesprites/dudewalk2/dudewalk22.png" id="33_ngaqm"]
 [ext_resource type="Texture2D" uid="uid://cusq00e43xhi7" path="res://assets/dudesprites/dudewalk2/dudewalk23.png" id="34_ggbt7"]
 [ext_resource type="Texture2D" uid="uid://bd3vo4y0dn1pf" path="res://assets/dudesprites/dudewalk2/dudewalk24.png" id="35_s0e6d"]
+[ext_resource type="AudioStream" uid="uid://o05nk18es2a0" path="res://audio/sfx/shotgunfire.wav" id="38_0nvfx"]
+[ext_resource type="AudioStream" uid="uid://f7gn1u7813ip" path="res://audio/sfx/shotgunreload.wav" id="39_ept8a"]
 
 [sub_resource type="SpriteFrames" id="2"]
 animations = [{
@@ -190,6 +192,15 @@ texture = ExtResource("2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_speed = 10.0
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="ShotgunFire" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("38_0nvfx")
+max_polyphony = 8
+
+[node name="ShotgunReload" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("39_ept8a")
 
 [node name="GunTimer" type="Timer" parent="."]
 one_shot = true

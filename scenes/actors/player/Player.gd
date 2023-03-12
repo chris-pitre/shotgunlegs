@@ -61,7 +61,8 @@ func apply_friction() -> void:
 
 ## Applies acceleration to player velocity
 func apply_acceleration(amount) -> void:
-	velocity.x = move_toward(velocity.x, MAX_SPEED * amount, ACCELERATION)
+	print(MAX_SPEED)
+	velocity.x = move_toward(velocity.x, MAX_SPEED * sign(amount), ACCELERATION)
 
 ## Shoots shotgun and applys force in opposite direction
 func shoot() -> void:

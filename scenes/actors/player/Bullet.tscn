@@ -1,23 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://lk8qxodl8l8t"]
+[gd_scene load_steps=5 format=3 uid="uid://lk8qxodl8l8t"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/Bullet.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://c8344x3k4cv36" path="res://assets/icon.png" id="2_n56hs"]
+[ext_resource type="Texture2D" uid="uid://byj8uk1t48yhg" path="res://assets/bullet/buckshotbullet.png" id="2_qynlb"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(16, 16)
+size = Vector2(4, 4)
 
-[node name="CharacterBody2D" type="RigidBody2D"]
+[sub_resource type="Curve" id="Curve_5fttk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Bullet" type="RigidBody2D"]
 collision_layer = 2
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-7.15256e-07, 7.15256e-07)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_n56hs")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.38419e-07, 2.38419e-07)
+scale = Vector2(1, 1)
+texture = ExtResource("2_qynlb")
+
+[node name="Tracer" type="Line2D" parent="."]
+z_index = -4
+width = 2.0
+width_curve = SubResource("Curve_5fttk")
+default_color = Color(0.972549, 0.772549, 0.227451, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_KinematicBody2D_body_entered"]

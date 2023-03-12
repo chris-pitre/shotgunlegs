@@ -67,7 +67,6 @@ func apply_friction() -> void:
 
 ## Applies acceleration to player velocity
 func apply_acceleration(amount) -> void:
-	print(MAX_SPEED)
 	velocity.x = move_toward(velocity.x, MAX_SPEED * sign(amount), ACCELERATION)
 
 ## Shoots shotgun and applies force in opposite direction
@@ -76,12 +75,12 @@ func shoot() -> void:
 	shotgunFire.play()
 	for _i in range(10):	
 		var bullet = bulletPath.instantiate()
-		bullet.position = $Marker2D.global_position
+		bullet.position = $Marker2D.position
 		bullet.rotation = cursorVector.angle()
 		var randomBulletSpeed = Vector2(2000 + randf_range(-400, 400), 0)
 		var randomAngle = cursorVector.angle() + randf_range(-0.25, 0.25)
 		bullet.apply_impulse(randomBulletSpeed.rotated(randomAngle), Vector2.ZERO)
-		get_parent().add_child(bullet)
+		add_child(bullet)
 	gunTimer.start(0.25)
 	AMMO -= 1
 	UI.set_shells(AMMO)

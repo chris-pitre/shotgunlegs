@@ -18,6 +18,7 @@ var AMMO = 0
 var cursorVector = Vector2.ZERO
 var notTouchedWall = false
 var onSlope = false
+var steepness = 0
 
 func _ready() -> void:
 	animatedSprite.play("idle")
@@ -28,7 +29,7 @@ func _physics_process(_delta) -> void:
 	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	
 	#Handling slopes
-	var steepness = get_steepness()
+	steepness = get_steepness()
 	if steepness > 44.0:
 		onSlope = true
 	else:
@@ -58,11 +59,12 @@ func _physics_process(_delta) -> void:
 
 	cursorVector = get_global_mouse_position() - position
 
-	if AMMO > 0 and timer.is_stopped():
-		if Input.is_action_just_pressed("mouse1"):
+	if AMMO > 0:
+		if timer.is_stopped() and Input.is_action_just_pressed("mouse1"):
 			shoot()
-	elif is_on_floor() and not onSlope:
+	if  AMMO < MAX_AMMO and is_on_floor() and timer.is_stopped() and not onSlope:
 		AMMO = MAX_AMMO
+		
 
 	if Input.is_action_pressed("ui_accept"):
 		get_tree().reload_current_scene()

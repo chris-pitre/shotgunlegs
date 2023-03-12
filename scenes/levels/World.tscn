@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://iyu3ak5ca6wo"]
+[gd_scene load_steps=8 format=3 uid="uid://iyu3ak5ca6wo"]
 
 [ext_resource type="PackedScene" uid="uid://1y8fkofflo3x" path="res://scenes/actors/player/Player.tscn" id="2"]
 [ext_resource type="TileSet" uid="uid://owyivpsaodj3" path="res://tileset.tres" id="2_bmve3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/levels/DebugUI.gd" id="4_astv3"]
 [ext_resource type="Texture2D" uid="uid://bmd3pv6e8mny6" path="res://assets/uisprites/shell.png" id="5_fufxx"]
 [ext_resource type="Script" path="res://scenes/levels/UI.gd" id="5_ksbcl"]
+[ext_resource type="Texture2D" uid="uid://chgq7k28ursha" path="res://assets/decoration/snowman.png" id="7_irfj8"]
 
 [node name="World" type="Node2D"]
 
@@ -113,3 +114,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("5_fufxx")
+
+[node name="Snowman" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(811, 238)
+texture = ExtResource("7_irfj8")

@@ -29,14 +29,13 @@ func _physics_process(_delta) -> void:
 		slopeTimer.start(0.1)
 	elif slopeTimer.is_stopped():
 		onSlope = false
-			
+	
+	animatedSprite.flip_h = false if get_last_motion().x > 0 else true
 	#Animations
 	if onSlope:
 		animatedSprite.play("roll")
 		animatedSprite.speed_scale = clampf(velocity.length() / 100, 0, 8)
-		animatedSprite.flip_h = false if get_last_motion().x > 0 else true
 	else:
-		animatedSprite.play("idle")
 		animatedSprite.speed_scale = 1
 
 	var input = Vector2.ZERO
@@ -96,8 +95,10 @@ func do_movement(input) -> void:
 		if not onSlope:
 			if input == 0:
 				apply_friction()
+				animatedSprite.play("idle")
 			else:
 				apply_acceleration(input)
+				animatedSprite.play("walk")
 		else:
 			velocity.x = move_toward(velocity.x, get_floor_normal().x * SPEED_CAP, FRICTION)
 			velocity.y = move_toward(velocity.y, 1 * 800000, GRAVITY)

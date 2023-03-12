@@ -12,23 +12,22 @@ const SPEED_CAP = 80000
 @export var UI: Control
 
 @onready var animatedSprite = $AnimatedSprite2D
-@onready var timer = $Timer
-@onready var slopeRayCast = $SlopeRayCast
+@onready var gunTimer = $GunTimer
+@onready var slopeTimer = $SlopeTimer
 
 var AMMO = 0
 var cursorVector = Vector2.ZERO
 var onSlope = false
-var steepness = 0
 
 func _ready() -> void:
 	animatedSprite.play("idle")
 
 func _physics_process(_delta) -> void:
 	#Handling slopes
-	steepness = get_steepness()
-	if abs(steepness) > 44.0:
+	if rad_to_deg(get_floor_angle()) > 44:
 		onSlope = true
-	else:
+		slopeTimer.start(0.1)
+	elif slopeTimer.is_stopped():
 		onSlope = false
 			
 	#Animations
@@ -42,7 +41,7 @@ func _physics_process(_delta) -> void:
 
 	var input = Vector2.ZERO
 	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	
+
 	apply_gravity()
 	do_movement(input.x)
 	shoot_and_reload()
@@ -77,20 +76,16 @@ func shoot() -> void:
 		var randomAngle = cursorVector.angle() + randf_range(-0.25, 0.25)
 		bullet.apply_impulse(randomBulletSpeed.rotated(randomAngle), Vector2.ZERO)
 		get_parent().add_child(bullet)
-	timer.start(0.25)
+	gunTimer.start(0.25)
 	AMMO -= 1
 	UI.set_shells(AMMO)
-
-## Gets angle of slope from raycast
-func get_steepness() -> float:
-	return (-90) - rad_to_deg(slopeRayCast.get_collision_normal().angle())
 
 ## Handles if player is able to shoot and reloads gun on the ground
 func shoot_and_reload() -> void:
 	if AMMO > 0:
-		if timer.is_stopped() and Input.is_action_just_pressed("mouse1"):
+		if gunTimer.is_stopped() and Input.is_action_just_pressed("mouse1"):
 			shoot()
-	if  AMMO < MAX_AMMO and is_on_floor() and timer.is_stopped() and not onSlope:
+	if  AMMO < MAX_AMMO and is_on_floor() and gunTimer.is_stopped() and not onSlope:
 		AMMO = MAX_AMMO
 		UI.reload_shells()
 
@@ -104,8 +99,5 @@ func do_movement(input) -> void:
 			else:
 				apply_acceleration(input)
 		else:
-			if steepness < 0:
-				velocity.x = move_toward(velocity.x, 0.75 * SPEED_CAP, ACCELERATION)
-			elif steepness > 0:
-				velocity.x = move_toward(velocity.x, -0.75 * SPEED_CAP, ACCELERATION)
+			velocity.x = move_toward(velocity.x, get_floor_normal().x * SPEED_CAP, FRICTION)
 			velocity.y = move_toward(velocity.y, 1 * 800000, GRAVITY)

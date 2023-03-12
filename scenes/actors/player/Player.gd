@@ -9,7 +9,7 @@ const SPEED_CAP = 80000
 @export var FRICTION: int = 10
 @export var GRAVITY: int = 4
 @export var MAX_AMMO: int = 2
-@export var tilemap: TileMap
+@export var UI: Control
 
 @onready var animatedSprite = $AnimatedSprite2D
 @onready var timer = $Timer
@@ -79,6 +79,7 @@ func shoot() -> void:
 		get_parent().add_child(bullet)
 	timer.start(0.25)
 	AMMO -= 1
+	UI.set_shells(AMMO)
 
 ## Gets angle of slope from raycast
 func get_steepness() -> float:
@@ -91,6 +92,7 @@ func shoot_and_reload() -> void:
 			shoot()
 	if  AMMO < MAX_AMMO and is_on_floor() and timer.is_stopped() and not onSlope:
 		AMMO = MAX_AMMO
+		UI.reload_shells()
 
 ## Does movement based off input axis if player is on floor and not on a slope
 ## Otherwise, handles tumbling movement off a slope

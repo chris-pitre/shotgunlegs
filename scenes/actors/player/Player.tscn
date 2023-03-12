@@ -1,7 +1,6 @@
-[gd_scene load_steps=42 format=3 uid="uid://1y8fkofflo3x"]
+[gd_scene load_steps=44 format=3 uid="uid://1y8fkofflo3x"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/Player.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://c8344x3k4cv36" path="res://assets/icon.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://b8cdgimmiac3l" path="res://assets/dudesprites/dudeidle2/dudeidle1.png" id="2_kgxfg"]
 [ext_resource type="Script" path="res://scenes/actors/player/Cursor.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://bsdggxt5qna1w" path="res://assets/dudesprites/dudeidle2/dudeidle2.png" id="3_15823"]
@@ -37,7 +36,9 @@
 [ext_resource type="Texture2D" uid="uid://djhoigi51rpkc" path="res://assets/dudesprites/dudewalk2/dudewalk22.png" id="33_ngaqm"]
 [ext_resource type="Texture2D" uid="uid://cusq00e43xhi7" path="res://assets/dudesprites/dudewalk2/dudewalk23.png" id="34_ggbt7"]
 [ext_resource type="Texture2D" uid="uid://bd3vo4y0dn1pf" path="res://assets/dudesprites/dudewalk2/dudewalk24.png" id="35_s0e6d"]
+[ext_resource type="Texture2D" uid="uid://bihuo6nb2aexc" path="res://assets/cursor/cursor1.png" id="37_bd4cx"]
 [ext_resource type="AudioStream" uid="uid://o05nk18es2a0" path="res://audio/sfx/shotgunfire.wav" id="38_0nvfx"]
+[ext_resource type="Texture2D" uid="uid://bodc1ygkld8ew" path="res://assets/cursor/cursor2.png" id="38_8nf46"]
 [ext_resource type="AudioStream" uid="uid://f7gn1u7813ip" path="res://audio/sfx/shotgunreload.wav" id="39_ept8a"]
 
 [sub_resource type="SpriteFrames" id="2"]
@@ -163,6 +164,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 26)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_nutwm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_bd4cx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_8nf46")
+}],
+"loop": true,
+"name": &"cursor",
+"speed": 1.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 floor_max_angle = 0.872665
@@ -173,8 +188,7 @@ GRAVITY = 20
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("2")
-animation = &"walk"
-frame_progress = 0.931381
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
@@ -186,9 +200,9 @@ shape = SubResource("1")
 position = Vector2(0, -64)
 script = ExtResource("3")
 
-[node name="Icon" type="Sprite2D" parent="Cursor"]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2")
+[node name="Icon" type="AnimatedSprite2D" parent="Cursor"]
+sprite_frames = SubResource("SpriteFrames_nutwm")
+animation = &"cursor"
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 process_callback = 0

@@ -17,8 +17,6 @@ config/icon="res://assets/icon.png"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
 window/size/initial_position_type=0
 window/stretch/mode="viewport"
 
@@ -71,4 +69,3 @@ common/enable_pause_aware_picking=true
 textures/decals/filter=0
 textures/light_projectors/filter=0
 environment/defaults/default_environment="res://scenes/default_env.tres"
-textures/canvas_textures/default_texture_filter=0

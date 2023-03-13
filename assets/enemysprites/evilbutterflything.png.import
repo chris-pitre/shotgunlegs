@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsr1n118l0rw"
-path="res://.godot/imported/dudefall.png-09a1783335c3d40eb27ce2c7830f98a1.ctex"
+uid="uid://cd1u0bu0nuub0"
+path="res://.godot/imported/evilbutterflything.png-a238e5a4620926c805cd439866aed29f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dudesprites/dudefall.png"
-dest_files=["res://.godot/imported/dudefall.png-09a1783335c3d40eb27ce2c7830f98a1.ctex"]
+source_file="res://assets/enemysprites/evilbutterflything.png"
+dest_files=["res://.godot/imported/evilbutterflything.png-a238e5a4620926c805cd439866aed29f.ctex"]
 
 [params]
 

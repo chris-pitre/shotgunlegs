@@ -213,6 +213,7 @@ position_smoothing_speed = 10.0
 
 [node name="ShotgunFire" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("38_0nvfx")
+volume_db = -5.0
 max_polyphony = 8
 
 [node name="ShotgunReload" type="AudioStreamPlayer2D" parent="SFX"]

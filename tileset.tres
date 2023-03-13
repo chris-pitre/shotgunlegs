@@ -1,13 +1,13 @@
 [gd_resource type="TileSet" load_steps=8 format=3 uid="uid://owyivpsaodj3"]
 
-[ext_resource type="Texture2D" uid="uid://biiqcb2dkqblr" path="res://assets/icon32.png" id="1_5qraw"]
-[ext_resource type="Texture2D" uid="uid://wcicxxncg371" path="res://assets/icontriangle32.png" id="2_lpqdi"]
+[ext_resource type="Texture2D" uid="uid://cvm1ng7h210mt" path="res://assets/environment/snow.png" id="1_l6nly"]
+[ext_resource type="Texture2D" uid="uid://ruda2vjljs45" path="res://assets/environment/snowslope.png" id="2_rcydo"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ycy36"]
 polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_evt7q"]
-texture = ExtResource("1_5qraw")
+texture = ExtResource("1_l6nly")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ycy36")
@@ -22,7 +22,7 @@ polygon = PackedVector2Array(-16, 16, 16, 16, -16, -16)
 polygon = PackedVector2Array(16, -16, -16, 16, 16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ax5u1"]
-texture = ExtResource("2_lpqdi")
+texture = ExtResource("2_rcydo")
 texture_region_size = Vector2i(32, 32)
 0:0/next_alternative_id = 3
 0:0/0 = 0

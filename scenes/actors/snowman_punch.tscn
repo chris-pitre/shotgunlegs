@@ -98,6 +98,7 @@ animations = [{
 size = Vector2(32, 32)
 
 [node name="SnowmanPunch" type="AnimatedSprite2D"]
+z_index = -5
 sprite_frames = SubResource("SpriteFrames_pyame")
 animation = &"punch"
 script = ExtResource("21_kcu1w")

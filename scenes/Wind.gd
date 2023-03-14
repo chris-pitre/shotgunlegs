@@ -12,8 +12,8 @@ func _ready() -> void: #Match effects to collision area
 	particles_clip.texture = particles_clip.texture.duplicate()
 	particles.process_material.direction.x = wind.x
 	particles.process_material.direction.y = wind.y
-	particles.process_material.initial_velocity_min = wind.length() * 16
-	particles.process_material.initial_velocity_max = wind.length() * 16
+	particles.process_material.initial_velocity_min = wind.length() * 64
+	particles.process_material.initial_velocity_max = wind.length() * 64
 	particles.process_material.emission_box_extents.x = collision_shape.shape.size.x / 2
 	particles.process_material.emission_box_extents.y = collision_shape.shape.size.y / 2
 	particles.amount = sqrt(collision_shape.shape.size.x * collision_shape.shape.size.y) / 4

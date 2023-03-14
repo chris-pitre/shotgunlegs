@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+class_name Player
 
 const bulletPath = preload('res://scenes/actors/player/Bullet.tscn')
 const SPEED_CAP = 80000
@@ -113,3 +114,7 @@ func do_movement(input) -> void:
 ## Camera position
 func move_camera() -> void:
 	camera.global_position = global_position + (cursorVector / 6)
+
+
+func _on_spike_spikes_entered():
+	velocity = velocity.bounce(velocity.normalized())

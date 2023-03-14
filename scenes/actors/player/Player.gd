@@ -117,4 +117,4 @@ func move_camera() -> void:
 
 
 func _on_spike_spikes_entered():
-	velocity = velocity.bounce(velocity.normalized())
+	velocity = velocity.bounce(velocity.normalized()) * 0.5

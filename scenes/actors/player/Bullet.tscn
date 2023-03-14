@@ -24,7 +24,6 @@ position = Vector2(-2.38419e-07, 2.38419e-07)
 texture = ExtResource("2_qynlb")
 
 [node name="Tracer" type="Line2D" parent="."]
-z_index = -4
 width = 2.0
 width_curve = SubResource("Curve_5fttk")
 default_color = Color(0.972549, 0.772549, 0.227451, 1)

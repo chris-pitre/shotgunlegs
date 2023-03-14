@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://iyu3ak5ca6wo"]
+[gd_scene load_steps=25 format=3 uid="uid://iyu3ak5ca6wo"]
 
 [ext_resource type="PackedScene" uid="uid://1y8fkofflo3x" path="res://scenes/actors/player/Player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://chwsuopb2lx3s" path="res://scenes/actors/player/Tilemap.tscn" id="3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://chgq7k28ursha" path="res://assets/decoration/snowman.png" id="7_irfj8"]
 [ext_resource type="Script" path="res://scenes/levels/Victory.gd" id="10_e5oc0"]
 [ext_resource type="AudioStream" uid="uid://0sb57at3nciy" path="res://audio/sfx/shotgunrack.wav" id="10_x8kff"]
+[ext_resource type="PackedScene" uid="uid://n03ggsyho6jv" path="res://scenes/prefabs/spike.tscn" id="11_sx36u"]
 [ext_resource type="PackedScene" uid="uid://070ilfnpaq68" path="res://scenes/actors/snowman_punch.tscn" id="12_vajjr"]
 
 [sub_resource type="Environment" id="Environment_m6gc4"]
@@ -214,7 +215,7 @@ scale = Vector2(3.476, 1.634)
 texture = SubResource("GradientTexture2D_3a27u")
 
 [node name="Player" parent="." node_paths=PackedStringArray("UI") instance=ExtResource("2")]
-position = Vector2(-114, -741)
+position = Vector2(-733, -162)
 MAX_SPEED = 60
 UI = NodePath("../CanvasLayer/UI")
 
@@ -253,5 +254,8 @@ process_material = SubResource("ParticleProcessMaterial_00k7l")
 lifetime = 4.0
 one_shot = true
 explosiveness = 1.0
+
+[node name="Spike" parent="." instance=ExtResource("11_sx36u")]
+position = Vector2(-765, -271)
 
 [connection signal="body_entered" from="Victory" to="Victory" method="_on_body_entered"]

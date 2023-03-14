@@ -114,7 +114,3 @@ func do_movement(input) -> void:
 ## Camera position
 func move_camera() -> void:
 	camera.global_position = global_position + (cursorVector / 6)
-
-
-func _on_spike_spikes_entered():
-	velocity = velocity.bounce(velocity.normalized()) * 0.5

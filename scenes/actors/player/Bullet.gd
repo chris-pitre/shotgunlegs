@@ -1,8 +1,13 @@
 extends RigidBody2D
 
+class_name Bullet
+
+signal target_hit
+
 @onready var tracer = $Tracer
 
 func _ready():
+	add_to_group("Bullet")
 	await get_tree().create_timer(.5, false).timeout
 	queue_free()
 
@@ -18,3 +23,6 @@ func _process(_delta):
 func _on_KinematicBody2D_body_entered(body):
 	if not body.is_in_group("Player"):
 		queue_free()
+
+func _on_target_hit():
+	queue_free()

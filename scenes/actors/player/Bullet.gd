@@ -25,5 +25,4 @@ func _on_KinematicBody2D_body_entered(body):
 		queue_free()
 
 func _on_target_hit():
-	print("hit")
 	queue_free()

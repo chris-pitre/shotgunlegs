@@ -10,8 +10,8 @@ size = Vector2(4, 4)
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Bullet" type="RigidBody2D"]
-collision_layer = 2
+[node name="Bullet" type="RigidBody2D" groups=["Bullet"]]
+collision_layer = 6
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1")
@@ -29,3 +29,4 @@ width_curve = SubResource("Curve_5fttk")
 default_color = Color(0.972549, 0.772549, 0.227451, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_KinematicBody2D_body_entered"]
+[connection signal="target_hit" from="." to="." method="_on_target_hit"]

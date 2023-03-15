@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://n03ggsyho6jv"]
 
 [ext_resource type="Script" path="res://scenes/prefabs/Spike.gd" id="1_2mgvi"]
-[ext_resource type="Texture2D" uid="uid://bh0mcyh2ghfh4" path="res://assets/environment/ice_spike.png" id="1_jrsrt"]
+[ext_resource type="Texture2D" uid="uid://ckh35lerbjph6" path="res://assets/environment/rock_spike.png" id="2_6m35d"]
 
 [node name="Spike" type="Node2D"]
 script = ExtResource("1_2mgvi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_jrsrt")
+texture = ExtResource("2_6m35d")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2

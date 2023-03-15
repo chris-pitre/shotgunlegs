@@ -3,6 +3,7 @@ extends Control
 const SHELL_EMPTY_SPRITE = preload("res://assets/uisprites/shellempty.png")
 const SHELL_SPRITE = preload("res://assets/uisprites/shell.png")
 const SHELL_PROJECTILE = preload("res://scenes/spent_shell.tscn")
+const SHELL_INDICATOR = preload("res://scenes/shellindicator.tscn")
 
 var shake_amp := 1
 var shake_frame_freq := 3
@@ -14,9 +15,7 @@ var shaking := false
 @onready var margin = $UIMargin
 @onready var shell_container = $UIMargin/ShellContainer
 
-func _ready():
-	set_max_shells(2)
-
+## Function to handle setting amount of ammo left for UI
 func set_shells(x: int) -> void:
 	shake_ui(8, 1, 16)
 	for shell_icon in shell_container.get_children():
@@ -29,13 +28,21 @@ func set_shells(x: int) -> void:
 				new_shell_projectile.global_position = shell_icon.global_position + Vector2(8, 24)
 			shell_icon.texture = SHELL_EMPTY_SPRITE
 
+## Function to handle setting max ammo to be held for UI
+func set_max_shells(x: int) -> void:
+	for child in shell_container.get_children():
+		child.queue_free()
+	for i in range(x):
+		var new_shell_indicator = SHELL_INDICATOR.instantiate()
+		shell_container.add_child(new_shell_indicator)
+		new_shell_indicator.name = "Shell%s" % str(i + 1)
+
+## Reloads shells
 func reload_shells() -> void:
 	for shell_icon in shell_container.get_children():
 		shell_icon.texture = SHELL_SPRITE
 
-func set_max_shells(x: int) -> void:
-	pass
-
+## Gives UI a shaking effect
 func shake_ui(amp: int, freq: int, length: int) -> void:
 	shake_amp = amp
 	shake_frame_freq = freq

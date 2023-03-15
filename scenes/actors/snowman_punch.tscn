@@ -1,93 +1,72 @@
-[gd_scene load_steps=25 format=3 uid="uid://070ilfnpaq68"]
+[gd_scene load_steps=4 format=3 uid="uid://bfx5vifabb5sv"]
 
-[ext_resource type="Texture2D" uid="uid://pv5jfa74b83e" path="res://assets/decoration/snowmanpunch/snowmanpunch1.png" id="1_rkjbv"]
-[ext_resource type="Texture2D" uid="uid://d3lvonemcar6c" path="res://assets/decoration/snowmanpunch/snowmanpunch2.png" id="2_cji1a"]
-[ext_resource type="Texture2D" uid="uid://iu8bhdk4tx48" path="res://assets/decoration/snowmanpunch/snowmanpunch3.png" id="3_fqpce"]
-[ext_resource type="Texture2D" uid="uid://by4c58qub1vur" path="res://assets/decoration/snowmanpunch/snowmanpunch4.png" id="4_mnti1"]
-[ext_resource type="Texture2D" uid="uid://ticbkx6orhgy" path="res://assets/decoration/snowmanpunch/snowmanpunch5.png" id="5_wbt2j"]
-[ext_resource type="Texture2D" uid="uid://byuwlawmxe7vl" path="res://assets/decoration/snowmanpunch/snowmanpunch6.png" id="6_m64hg"]
-[ext_resource type="Texture2D" uid="uid://upr54n14ast" path="res://assets/decoration/snowmanpunch/snowmanpunch7.png" id="7_oupbx"]
-[ext_resource type="Texture2D" uid="uid://dwax77b1aef1k" path="res://assets/decoration/snowmanpunch/snowmanpunch8.png" id="8_038yl"]
-[ext_resource type="Texture2D" uid="uid://d2habp7cnyw1d" path="res://assets/decoration/snowmanpunch/snowmanpunch9.png" id="9_wuy1v"]
-[ext_resource type="Texture2D" uid="uid://dxg3q4sbo1c7h" path="res://assets/decoration/snowmanpunch/snowmanpunch10.png" id="10_lv8ob"]
-[ext_resource type="Texture2D" uid="uid://cx4t142ducot" path="res://assets/decoration/snowmanpunch/snowmanpunch11.png" id="11_48sy7"]
-[ext_resource type="Texture2D" uid="uid://ds7dlew14t7r8" path="res://assets/decoration/snowmanpunch/snowmanpunch12.png" id="12_a66np"]
-[ext_resource type="Texture2D" uid="uid://ck7hhu3fsi5v3" path="res://assets/decoration/snowmanpunch/snowmanpunch13.png" id="13_as3ct"]
-[ext_resource type="Texture2D" uid="uid://doj2lna8l5yrl" path="res://assets/decoration/snowmanpunch/snowmanpunch14.png" id="14_rj0jx"]
-[ext_resource type="Texture2D" uid="uid://di6p0g3dld42k" path="res://assets/decoration/snowmanpunch/snowmanpunch15.png" id="15_dybos"]
-[ext_resource type="Texture2D" uid="uid://ct0rq4q5axt1f" path="res://assets/decoration/snowmanpunch/snowmanpunch16.png" id="16_6gyjn"]
-[ext_resource type="Texture2D" uid="uid://bq2eqaa74ctxs" path="res://assets/decoration/snowmanpunch/snowmanpunch17.png" id="17_oxfxj"]
-[ext_resource type="Texture2D" uid="uid://bnolayo8xg402" path="res://assets/decoration/snowmanpunch/snowmanpunch18.png" id="18_yp0i4"]
-[ext_resource type="Texture2D" uid="uid://ct8rdu6va28fd" path="res://assets/decoration/snowmanpunch/snowmanpunch19.png" id="19_cum0p"]
-[ext_resource type="Texture2D" uid="uid://bok2b1wlrmsv" path="res://assets/decoration/snowmanpunch/snowmanpunch20.png" id="20_ntw8m"]
-[ext_resource type="Texture2D" uid="uid://b3eeffktuqe7o" path="res://assets/decoration/snowmanpunch/snowmanpunch21.png" id="21_14cq8"]
 [ext_resource type="Script" path="res://scenes/actors/snowman_punch.gd" id="21_kcu1w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pyame"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_rkjbv")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_cji1a")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_fqpce")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_mnti1")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_wbt2j")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_m64hg")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_oupbx")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_038yl")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_wuy1v")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_lv8ob")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_48sy7")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_a66np")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_as3ct")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_rj0jx")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_dybos")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_6gyjn")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_oxfxj")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_yp0i4")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_cum0p")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_ntw8m")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_14cq8")
+"texture": null
 }],
 "loop": false,
 "name": &"punch",

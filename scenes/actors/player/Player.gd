@@ -26,6 +26,7 @@ var onSlope = false
 
 func _ready() -> void:
 	animatedSprite.play("idle")
+	UI.set_max_shells(MAX_AMMO)
 
 func _physics_process(_delta) -> void:
 	#Handling slopes
@@ -114,3 +115,8 @@ func do_movement(input) -> void:
 ## Camera position
 func move_camera() -> void:
 	camera.global_position = global_position + (cursorVector / 6)
+
+
+func set_max_shells(x: int) -> void:
+	MAX_AMMO = x
+	UI.set_max_shells(x)

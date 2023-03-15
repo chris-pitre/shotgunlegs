@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cggulibigbugs"]
+[gd_scene load_steps=9 format=3 uid="uid://cggulibigbugs"]
 
 [ext_resource type="Script" path="res://scenes/Wind.gd" id="1_byc2l"]
 
@@ -8,6 +8,13 @@
 gradient = SubResource("Gradient_2as0w")
 width = 128
 height = 128
+
+[sub_resource type="Gradient" id="Gradient_472un"]
+offsets = PackedFloat32Array(0, 0.488889, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5vgqn"]
+gradient = SubResource("Gradient_472un")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7nb00"]
 emission_shape = 3
@@ -20,6 +27,8 @@ initial_velocity_min = 320.0
 initial_velocity_max = 320.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
+color_ramp = SubResource("GradientTexture1D_5vgqn")
+turbulence_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_3fwfo"]
 interpolation_mode = 1
@@ -43,7 +52,9 @@ clip_children = 1
 texture = SubResource("GradientTexture2D_rk3yc")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ParticleClip"]
+amount = 16
 process_material = SubResource("ParticleProcessMaterial_7nb00")
 texture = SubResource("GradientTexture2D_sua0e")
-lifetime = 0.2
+lifetime = 0.5
 visibility_rect = Rect2(-50, -50, 100, 200)
+trail_enabled = true

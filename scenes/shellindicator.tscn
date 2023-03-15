@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw4v8vouewmhu"]
+
+[ext_resource type="Texture2D" uid="uid://bmd3pv6e8mny6" path="res://assets/uisprites/shell.png" id="1_ripbe"]
+
+[node name="Shell" type="TextureRect"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_ripbe")

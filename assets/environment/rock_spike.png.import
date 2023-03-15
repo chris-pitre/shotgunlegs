@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnolayo8xg402"
-path="res://.godot/imported/snowmanpunch18.png-15e3f5e7e6b5fcc1917b9536c1dd6cba.ctex"
+uid="uid://ckh35lerbjph6"
+path="res://.godot/imported/rock_spike.png-f5a66a2d7fd0c87bee73dbaa6fd0d1ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/decoration/snowmanpunch/snowmanpunch18.png"
-dest_files=["res://.godot/imported/snowmanpunch18.png-15e3f5e7e6b5fcc1917b9536c1dd6cba.ctex"]
+source_file="res://assets/environment/rock_spike.png"
+dest_files=["res://.godot/imported/rock_spike.png-f5a66a2d7fd0c87bee73dbaa6fd0d1ac.ctex"]
 
 [params]
 

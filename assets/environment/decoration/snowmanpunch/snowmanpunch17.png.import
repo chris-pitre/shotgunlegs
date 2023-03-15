@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by4c58qub1vur"
-path="res://.godot/imported/snowmanpunch4.png-fc631320b2c7f580a600c4f6388a5a90.ctex"
+uid="uid://bq2eqaa74ctxs"
+path="res://.godot/imported/snowmanpunch17.png-be461577bd803d895353e00a02420a46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/decoration/snowmanpunch/snowmanpunch4.png"
-dest_files=["res://.godot/imported/snowmanpunch4.png-fc631320b2c7f580a600c4f6388a5a90.ctex"]
+source_file="res://assets/environment/decoration/snowmanpunch/snowmanpunch17.png"
+dest_files=["res://.godot/imported/snowmanpunch17.png-be461577bd803d895353e00a02420a46.ctex"]
 
 [params]
 

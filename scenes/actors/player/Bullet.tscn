@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://lk8qxodl8l8t"]
+[gd_scene load_steps=6 format=3 uid="uid://lk8qxodl8l8t"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/Bullet.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bna75iqnchoke" path="res://scenes/bullet_impact.tscn" id="2_puksw"]
 [ext_resource type="Texture2D" uid="uid://byj8uk1t48yhg" path="res://assets/bullet/buckshotbullet.png" id="2_qynlb"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -12,9 +13,12 @@ point_count = 2
 
 [node name="Bullet" type="RigidBody2D" groups=["Bullet"]]
 collision_layer = 6
+gravity_scale = 0.0
+continuous_cd = 1
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1")
+impact = ExtResource("2_puksw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")

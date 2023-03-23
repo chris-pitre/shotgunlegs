@@ -1,6 +1,13 @@
+class_name Player
 extends CharacterBody2D
 
-class_name Player
+enum STATES {
+	IDLE,
+	WALKING,
+	RISING,
+	FALLING,
+	SLOPEFALL,
+}
 
 const bulletPath = preload('res://scenes/actors/player/Bullet.tscn')
 const SPEED_CAP = 80000
@@ -18,46 +25,57 @@ const SPEED_CAP = 80000
 @onready var slopeTimer = $SlopeTimer
 @onready var shotgunFire = $SFX/ShotgunFire
 @onready var shotgunReload = $SFX/ShotgunReload
-@onready var camera = $PlayerCamera
 
 var AMMO = 0
 var cursorVector = Vector2.ZERO
 var onSlope = false
+var currentState = STATES.IDLE
+var input = Vector2.ZERO
 
 func _ready() -> void:
 	animatedSprite.play("idle")
 	UI.set_max_shells(MAX_AMMO)
 
-func _physics_process(_delta) -> void:
+func _physics_process(delta) -> void:
 	#Handling slopes
-	if rad_to_deg(get_floor_angle()) > 44:
-		onSlope = true
-		slopeTimer.start(0.1)
-	elif slopeTimer.is_stopped():
-		onSlope = false
-	
-	animatedSprite.flip_h = false if get_last_motion().x > 0 else true
-	#Animations
-	if onSlope:
-		animatedSprite.play("roll")
-		animatedSprite.speed_scale = clampf(velocity.length() / 100, 0, 8)
-	else:
-		animatedSprite.speed_scale = 1
+	if is_on_floor():
+		if rad_to_deg(get_floor_angle()) > 44:
+			onSlope = true
+		else:
+			onSlope = false
 
-	var input = Vector2.ZERO
+	input = Vector2.ZERO
 	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	cursorVector = get_global_mouse_position() - position
 	
-	move_camera()
 	apply_gravity()
 	do_movement(input.x)
+	do_animation(delta)
 	shoot_and_reload()
 	
 	if Input.is_action_pressed("ui_accept"):
 		get_tree().reload_current_scene()
 	
 	move_and_slide()
-	
+
+## Does animation logic
+func do_animation(delta) -> void:
+	animatedSprite.flip_h = false if get_last_motion().x > 0 else true
+	if onSlope:
+		animatedSprite.play("roll")
+		$AnimatedSprite2D.rotation += clampf(sign(velocity.x) * velocity.length() / 10, -16, 16) * delta
+	else:
+		$AnimatedSprite2D.rotation = 0
+		if is_on_floor():
+			if input.x != 0:
+				animatedSprite.play("walk")
+			else:
+				animatedSprite.play("idle")
+		else:
+			if velocity.y > 0:
+				animatedSprite.play("falling")
+				$AnimatedSprite2D.rotation_degrees = -clampf(velocity.x / 10, -45, 45)
+			else:
+				animatedSprite.play("rising")
 
 ## Applies gravity to player velocity
 func apply_gravity() -> void:
@@ -73,16 +91,16 @@ func apply_acceleration(amount) -> void:
 
 ## Shoots shotgun and applies force in opposite direction
 func shoot() -> void:
-	velocity += cursorVector.normalized() * JUMP_FORCE
+	velocity += get_local_mouse_position().normalized() * JUMP_FORCE
 	shotgunFire.play()
-	for _i in range(10):	
+	for _i in range(10):
 		var bullet = bulletPath.instantiate()
-		bullet.position = $Marker2D.position
-		bullet.rotation = cursorVector.angle()
+		Game.world.projectiles.add_child(bullet)
+		bullet.global_position = $Marker2D.global_position
+		bullet.rotation = get_local_mouse_position().angle()
 		var randomBulletSpeed = Vector2(2000 + randf_range(-400, 400), 0)
-		var randomAngle = cursorVector.angle() + randf_range(-0.25, 0.25)
+		var randomAngle = get_local_mouse_position().angle() + randf_range(-0.25, 0.25)
 		bullet.apply_impulse(randomBulletSpeed.rotated(randomAngle), Vector2.ZERO)
-		add_child(bullet)
 	gunTimer.start(0.25)
 	AMMO -= 1
 	UI.set_shells(AMMO)
@@ -104,17 +122,11 @@ func do_movement(input) -> void:
 		if not onSlope:
 			if input == 0:
 				apply_friction()
-				animatedSprite.play("idle")
 			else:
 				apply_acceleration(input)
-				animatedSprite.play("walk")
 		else:
 			velocity.x = move_toward(velocity.x, get_floor_normal().x * SPEED_CAP, FRICTION)
 			velocity.y = move_toward(velocity.y, 1 * SPEED_CAP, GRAVITY)
-			
-## Camera position
-func move_camera() -> void:
-	camera.global_position = global_position + (cursorVector / 6)
 
 
 func set_max_shells(x: int) -> void:

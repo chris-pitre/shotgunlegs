@@ -1,4 +1,6 @@
 extends Node2D
 
+@onready var projectiles = $Projectiles
+
 func _ready():
-	RenderingServer.set_default_clear_color(Color.cornflower)
+	Game.world = self

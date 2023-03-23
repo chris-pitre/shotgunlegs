@@ -5,12 +5,12 @@ class_name Player
 const bulletPath = preload('res://scenes/actors/player/Bullet.tscn')
 const SPEED_CAP = 80000
 
-@export var JUMP_FORCE: int = -140
-@export var MAX_SPEED: int = 100
-@export var ACCELERATION: int = 10
-@export var FRICTION: int = 10
-@export var GRAVITY: int = 4
-@export var MAX_AMMO: int = 2
+@export var JUMP_FORCE: int = PlayerSingleton.JUMP_FORCE
+@export var MAX_SPEED: int = PlayerSingleton.MAX_SPEED
+@export var ACCELERATION: int = PlayerSingleton.ACCELERATION
+@export var FRICTION: int = PlayerSingleton.FRICTION
+@export var GRAVITY: int = PlayerSingleton.GRAVITY
+@export var MAX_AMMO: int = PlayerSingleton.MAX_AMMO
 @export var UI: Control
 
 @onready var animatedSprite = $AnimatedSprite2D

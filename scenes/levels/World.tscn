@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://iyu3ak5ca6wo"]
+[gd_scene load_steps=22 format=3 uid="uid://iyu3ak5ca6wo"]
 
+[ext_resource type="Script" path="res://scenes/levels/scene_load.gd" id="1_75aef"]
 [ext_resource type="PackedScene" uid="uid://1y8fkofflo3x" path="res://scenes/actors/player/Player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://chwsuopb2lx3s" path="res://scenes/actors/player/Tilemap.tscn" id="3"]
 [ext_resource type="Script" path="res://scenes/levels/DebugUI.gd" id="4_astv3"]
@@ -33,6 +34,14 @@ seamless = true
 color_ramp = SubResource("Gradient_h8pso")
 noise = SubResource("FastNoiseLite_a7m5n")
 
+[sub_resource type="Gradient" id="Gradient_ktclt"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7vman"]
+gradient = SubResource("Gradient_ktclt")
+width = 1024
+height = 1024
+fill_from = Vector2(1, 0)
+
 [sub_resource type="Environment" id="Environment_m6gc4"]
 glow_intensity = 8.0
 glow_strength = 2.0
@@ -47,6 +56,7 @@ size = Vector2(51, 50)
 
 [node name="World" type="Node2D"]
 modulate = Color(0.686275, 0.686275, 0.686275, 1)
+script = ExtResource("1_75aef")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -184,6 +194,12 @@ position = Vector2(1572, -888)
 MAX_SPEED = 60
 MAX_AMMO = 1
 UI = NodePath("../CanvasLayer/UI")
+
+[node name="Blackout" type="Sprite2D" parent="Player"]
+modulate = Color(1, 1, 1, 0)
+z_index = 20
+position = Vector2(116, -53)
+texture = SubResource("GradientTexture2D_7vman")
 
 [node name="Environment" type="Node2D" parent="."]
 

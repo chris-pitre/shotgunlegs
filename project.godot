@@ -17,7 +17,7 @@ config/icon="res://assets/icon.png"
 
 [autoload]
 
-Game="*res://scenes/game.gd"
+PlayerSingleton="*res://scenes/actors/player/Player_Singleton.gd"
 
 [display]
 
@@ -69,7 +69,6 @@ mouse1={
 
 [physics]
 
-2d/solver/solver_iterations=64
 common/enable_pause_aware_picking=true
 
 [rendering]

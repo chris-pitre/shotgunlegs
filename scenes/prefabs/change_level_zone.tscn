@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3px8msmxkkue"]
+
+[ext_resource type="Script" path="res://scenes/prefabs/ChangeLevelZone.gd" id="1_1rkkq"]
+
+[sub_resource type="Gradient" id="Gradient_3jy4n"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vc16h"]
+gradient = SubResource("Gradient_3jy4n")
+width = 1024
+height = 1024
+fill_from = Vector2(1, 0)
+
+[node name="ChangeLevelZone" type="Area2D"]
+z_index = 20
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_1rkkq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = SubResource("GradientTexture2D_vc16h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

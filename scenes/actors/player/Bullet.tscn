@@ -24,7 +24,6 @@ impact = ExtResource("2_puksw")
 shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2.38419e-07, 2.38419e-07)
 texture = ExtResource("2_qynlb")
 
 [node name="Tracer" type="Line2D" parent="."]

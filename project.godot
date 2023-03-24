@@ -18,6 +18,7 @@ config/icon="res://assets/icon.png"
 [autoload]
 
 PlayerSingleton="*res://scenes/actors/player/Player_Singleton.gd"
+Game="*res://scenes/game.gd"
 
 [display]
 

@@ -32,4 +32,3 @@ width_curve = SubResource("Curve_5fttk")
 default_color = Color(0.972549, 0.772549, 0.227451, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_KinematicBody2D_body_entered"]
-[connection signal="target_hit" from="." to="." method="_on_target_hit"]

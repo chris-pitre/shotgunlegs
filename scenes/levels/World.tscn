@@ -244,8 +244,7 @@ texture = SubResource("NoiseTexture2D_u3uex")
 centered = false
 
 [node name="Player" parent="." node_paths=PackedStringArray("UI") instance=ExtResource("2")]
-MAX_SPEED = 60
-MAX_AMMO = 1
+position = Vector2(1536, -888)
 UI = NodePath("../CanvasLayer/UI")
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]

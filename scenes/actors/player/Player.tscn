@@ -196,13 +196,10 @@ animations = [{
 collision_layer = 2
 floor_max_angle = 0.872665
 script = ExtResource("1")
-JUMP_FORCE = -500
-FRICTION = 40
-GRAVITY = 20
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("2")
-animation = &"rising"
+animation = &"roll"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)

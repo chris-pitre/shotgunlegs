@@ -1,13 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://bgr6xlp68lm1p"]
+[gd_scene load_steps=16 format=3 uid="uid://bgr6xlp68lm1p"]
 
 [ext_resource type="PackedScene" uid="uid://chwsuopb2lx3s" path="res://scenes/actors/player/Tilemap.tscn" id="1_l6qch"]
-[ext_resource type="Script" path="res://scenes/levels/scene_load.gd" id="1_p2eai"]
+[ext_resource type="Script" path="res://scenes/levels/World.gd" id="1_yda3e"]
 [ext_resource type="PackedScene" uid="uid://1y8fkofflo3x" path="res://scenes/actors/player/Player.tscn" id="2_7gi6t"]
 [ext_resource type="Script" path="res://scenes/levels/DebugUI.gd" id="2_grxf4"]
 [ext_resource type="Theme" uid="uid://b5cryc1r68bp6" path="res://assets/theme.tres" id="3_5qkv1"]
 [ext_resource type="Script" path="res://scenes/levels/UI.gd" id="4_gko3q"]
 [ext_resource type="Script" path="res://scenes/levels/ShellContainer.gd" id="5_8jydd"]
 [ext_resource type="Texture2D" uid="uid://n1bjk580gqot" path="res://assets/environment/shittymountains.png" id="6_6q53i"]
+[ext_resource type="Script" path="res://scenes/levels/PlayerCamera.gd" id="8_nmy1t"]
 
 [sub_resource type="Gradient" id="Gradient_xslnd"]
 colors = PackedColorArray(0.190727, 0.162942, 0.359298, 1, 0.616116, 0.694814, 0.904034, 1)
@@ -30,14 +31,6 @@ seamless = true
 color_ramp = SubResource("Gradient_beipe")
 noise = SubResource("FastNoiseLite_5uf3r")
 
-[sub_resource type="Gradient" id="Gradient_bjpmb"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_251rc"]
-gradient = SubResource("Gradient_bjpmb")
-width = 1024
-height = 1024
-fill_from = Vector2(1, 0)
-
 [sub_resource type="Environment" id="Environment_28a2g"]
 glow_intensity = 8.0
 glow_strength = 2.0
@@ -48,7 +41,7 @@ glow_hdr_scale = 4.0
 glow_hdr_luminance_cap = 256.0
 
 [node name="1-2" type="Node2D"]
-script = ExtResource("1_p2eai")
+script = ExtResource("1_yda3e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -185,11 +178,8 @@ centered = false
 position = Vector2(-31, -60)
 UI = NodePath("../CanvasLayer/UI")
 
-[node name="Blackout" type="Sprite2D" parent="Player"]
-modulate = Color(1, 1, 1, 0)
-z_index = 20
-position = Vector2(26, 44)
-texture = SubResource("GradientTexture2D_251rc")
+[node name="PlayerCamera" type="Camera2D" parent="Player"]
+script = ExtResource("8_nmy1t")
 
 [node name="Environment" type="Node2D" parent="."]
 
@@ -219,3 +209,5 @@ layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = -6
 layer_2/tile_data = PackedInt32Array(-327685, 393219, 11, -262149, 393219, 11, -262150, 1114115, 1, -196614, 720899, 1, -131078, 720899, 1, -65542, 720899, 2, -5, 720899, 2, -65541, 1114115, 1, -131077, 458755, 11, -131076, 458755, 11, -196612, 458755, 11, -262148, 458755, 11, -262147, 393219, 10, -196611, 458755, 10, -131075, 1048579, 1, -65540, 1048579, 1, -4, 851971, 2, -65539, 851971, 2, -196613, 458755, 10, -393221, 458755, 10, -458756, 393219, 11, -524292, 458755, 11, -589828, 786435, 1, -524293, 786435, 1, -458757, 786435, 1, -393222, 786435, 1, -327686, 393219, 10, -262151, 720899, 2, -327687, 720899, 1, -458758, 1114115, 2, -524294, 720899, 1, -589830, 720899, 1, -655366, 720899, 1, -720902, 720899, 0, -458759, 720899, 0, -393223, 720899, 1, -589829, 786435, 1, -720900, 786435, 1, -655365, 458755, 10, -786436, 786435, 0, -786435, 1114115, 2, -851971, 720899, 0, -720899, 786435, 1, -655363, 458755, 11, -720901, 1114115, 2, -786437, 983043, 2, -851973, 917507, 0, -655364, 393219, 10, -851970, 851971, 0, -786433, 786435, 0, -720897, 1048579, 1, -655361, 851971, 1, -589826, 393219, 10, -524290, 393219, 10, -458754, 458755, 10, -458755, 393219, 10, -655362, 393219, 11, -393219, 458755, 10, -327683, 393219, 11, -327684, 786435, 1, -393220, 393219, 10, -589827, 458755, 11, -786434, 1048579, 2, -720898, 393219, 10, -524291, 458755, 10, -196610, 851971, 1, -262146, 851971, 1, -327682, 1048579, 1, -393217, 851971, 1, -458753, 851971, 1, -524289, 851971, 1, -589825, 851971, 1, -786432, 851971, 2, -851968, 851971, 0, -393218, 393219, 11, -131074, 851971, 2, -327681, 851971, 2)
+
+[node name="Projectiles" type="Node2D" parent="."]

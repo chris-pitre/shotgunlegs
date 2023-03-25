@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwnre45h4jlie"]
+[gd_scene load_steps=4 format=3 uid="uid://cwnre45h4jlie"]
 
 [ext_resource type="PackedScene" uid="uid://iyu3ak5ca6wo" path="res://scenes/levels/World.tscn" id="1_2qh5v"]
 [ext_resource type="PackedScene" uid="uid://blc8ph64rgpwl" path="res://scenes/ui/transition.tscn" id="1_8kjqo"]
+[ext_resource type="Script" path="res://scenes/scene_manager/scene_manager.gd" id="1_g1pgx"]
 
 [node name="SceneManager" type="Node2D"]
+script = ExtResource("1_g1pgx")
 
 [node name="CurrentScene" type="Node2D" parent="."]
 
 [node name="World" parent="CurrentScene" instance=ExtResource("1_2qh5v")]
 
 [node name="Transition" parent="." instance=ExtResource("1_8kjqo")]
+
+[connection signal="anim_finished" from="Transition" to="." method="_on_transition_anim_finished"]

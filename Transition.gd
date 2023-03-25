@@ -3,7 +3,7 @@ extends CanvasLayer
 signal anim_finished
 
 func _ready():
-	change_scene()
+	$AnimationPlayer.play("fade_in")
 
 func change_scene():
 	$AnimationPlayer.play("fade_to_black")

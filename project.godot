@@ -19,6 +19,7 @@ config/icon="res://assets/icon.png"
 
 PlayerSingleton="*res://scenes/actors/player/Player_Singleton.gd"
 Game="*res://scenes/game.gd"
+SceneManagerSingleton="*res://scenes/scene_manager/scene_manager_singleton.gd"
 
 [display]
 

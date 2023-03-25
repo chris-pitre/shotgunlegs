@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://iyu3ak5ca6wo"]
+[gd_scene load_steps=29 format=3 uid="uid://iyu3ak5ca6wo"]
 
 [ext_resource type="Script" path="res://scenes/levels/World.gd" id="1_n37r8"]
 [ext_resource type="PackedScene" uid="uid://1y8fkofflo3x" path="res://scenes/actors/player/Player.tscn" id="2"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://n03ggsyho6jv" path="res://scenes/prefabs/spike.tscn" id="11_sx36u"]
 [ext_resource type="Texture2D" uid="uid://chgq7k28ursha" path="res://assets/environment/decoration/snowman.png" id="12_3sf0f"]
 [ext_resource type="AudioStream" uid="uid://bw44rk2fw0eku" path="res://audio/sfx/wind.wav" id="12_dktsp"]
+[ext_resource type="PackedScene" uid="uid://b3px8msmxkkue" path="res://scenes/prefabs/change_level_zone.tscn" id="14_t0e7b"]
+[ext_resource type="PackedScene" uid="uid://bgr6xlp68lm1p" path="res://scenes/levels/1_2.tscn" id="15_57kgb"]
 
 [sub_resource type="Gradient" id="Gradient_xslnd"]
 colors = PackedColorArray(0.190727, 0.162942, 0.359298, 1, 0.616116, 0.694814, 0.904034, 1)
@@ -79,6 +81,9 @@ glow_blend_mode = 1
 glow_hdr_threshold = 4.0
 glow_hdr_scale = 4.0
 glow_hdr_luminance_cap = 256.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w525o"]
+size = Vector2(48, 48)
 
 [node name="World" type="Node2D"]
 modulate = Color(0.686275, 0.686275, 0.686275, 1)
@@ -306,3 +311,10 @@ rotation = -1.57079
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_dktsp")
 autoplay = true
+
+[node name="ChangeLevelZone" parent="." instance=ExtResource("14_t0e7b")]
+position = Vector2(1704, -888)
+next_level = ExtResource("15_57kgb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeLevelZone"]
+shape = SubResource("RectangleShape2D_w525o")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwnre45h4jlie"]
+
+[ext_resource type="PackedScene" uid="uid://iyu3ak5ca6wo" path="res://scenes/levels/World.tscn" id="1_2qh5v"]
+[ext_resource type="PackedScene" uid="uid://blc8ph64rgpwl" path="res://scenes/ui/transition.tscn" id="1_8kjqo"]
+
+[node name="SceneManager" type="Node2D"]
+
+[node name="CurrentScene" type="Node2D" parent="."]
+
+[node name="World" parent="CurrentScene" instance=ExtResource("1_2qh5v")]
+
+[node name="Transition" parent="." instance=ExtResource("1_8kjqo")]

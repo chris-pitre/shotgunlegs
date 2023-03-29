@@ -1,72 +1,93 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfx5vifabb5sv"]
+[gd_scene load_steps=25 format=3 uid="uid://bfx5vifabb5sv"]
 
+[ext_resource type="Texture2D" uid="uid://pv5jfa74b83e" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch1.png" id="1_edbxh"]
+[ext_resource type="Texture2D" uid="uid://d3lvonemcar6c" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch2.png" id="2_73rg0"]
+[ext_resource type="Texture2D" uid="uid://iu8bhdk4tx48" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch3.png" id="3_fust5"]
+[ext_resource type="Texture2D" uid="uid://by4c58qub1vur" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch4.png" id="4_ji8sy"]
+[ext_resource type="Texture2D" uid="uid://ticbkx6orhgy" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch5.png" id="5_iqsdl"]
+[ext_resource type="Texture2D" uid="uid://byuwlawmxe7vl" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch6.png" id="6_1ahiu"]
+[ext_resource type="Texture2D" uid="uid://upr54n14ast" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch7.png" id="7_0a3be"]
+[ext_resource type="Texture2D" uid="uid://dwax77b1aef1k" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch8.png" id="8_4t2mq"]
+[ext_resource type="Texture2D" uid="uid://d2habp7cnyw1d" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch9.png" id="9_fnsu5"]
+[ext_resource type="Texture2D" uid="uid://dxg3q4sbo1c7h" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch10.png" id="10_o0pfi"]
+[ext_resource type="Texture2D" uid="uid://cx4t142ducot" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch11.png" id="11_5h5ln"]
+[ext_resource type="Texture2D" uid="uid://ds7dlew14t7r8" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch12.png" id="12_pof61"]
+[ext_resource type="Texture2D" uid="uid://ck7hhu3fsi5v3" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch13.png" id="13_hmnvv"]
+[ext_resource type="Texture2D" uid="uid://doj2lna8l5yrl" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch14.png" id="14_36ifq"]
+[ext_resource type="Texture2D" uid="uid://di6p0g3dld42k" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch15.png" id="15_v3f8g"]
+[ext_resource type="Texture2D" uid="uid://ct0rq4q5axt1f" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch16.png" id="16_j07a8"]
+[ext_resource type="Texture2D" uid="uid://bq2eqaa74ctxs" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch17.png" id="17_bxbdg"]
+[ext_resource type="Texture2D" uid="uid://bnolayo8xg402" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch18.png" id="18_80wbu"]
+[ext_resource type="Texture2D" uid="uid://ct8rdu6va28fd" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch19.png" id="19_34p64"]
+[ext_resource type="Texture2D" uid="uid://bok2b1wlrmsv" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch20.png" id="20_6arvw"]
 [ext_resource type="Script" path="res://scenes/actors/snowman_punch.gd" id="21_kcu1w"]
+[ext_resource type="Texture2D" uid="uid://b3eeffktuqe7o" path="res://assets/environment/decoration/snowmanpunch/snowmanpunch21.png" id="21_lb3dv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pyame"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("1_edbxh")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("2_73rg0")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("3_fust5")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("4_ji8sy")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("5_iqsdl")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("6_1ahiu")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("7_0a3be")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("8_4t2mq")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("9_fnsu5")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("10_o0pfi")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("11_5h5ln")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("12_pof61")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("13_hmnvv")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("14_36ifq")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("15_v3f8g")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("16_j07a8")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("17_bxbdg")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("18_80wbu")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("19_34p64")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("20_6arvw")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("21_lb3dv")
 }],
 "loop": false,
 "name": &"punch",

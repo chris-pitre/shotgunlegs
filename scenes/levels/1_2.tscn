@@ -1,12 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bgr6xlp68lm1p"]
+[gd_scene load_steps=12 format=3 uid="uid://bgr6xlp68lm1p"]
 
 [ext_resource type="PackedScene" uid="uid://chwsuopb2lx3s" path="res://scenes/actors/player/Tilemap.tscn" id="1_l6qch"]
 [ext_resource type="Script" path="res://scenes/levels/World.gd" id="1_yda3e"]
 [ext_resource type="PackedScene" uid="uid://1y8fkofflo3x" path="res://scenes/actors/player/Player.tscn" id="2_7gi6t"]
-[ext_resource type="Script" path="res://scenes/levels/DebugUI.gd" id="2_grxf4"]
-[ext_resource type="Theme" uid="uid://b5cryc1r68bp6" path="res://assets/theme.tres" id="3_5qkv1"]
-[ext_resource type="Script" path="res://scenes/levels/UI.gd" id="4_gko3q"]
-[ext_resource type="Script" path="res://scenes/levels/ShellContainer.gd" id="5_8jydd"]
 [ext_resource type="Texture2D" uid="uid://n1bjk580gqot" path="res://assets/environment/shittymountains.png" id="6_6q53i"]
 [ext_resource type="Script" path="res://scenes/levels/PlayerCamera.gd" id="8_nmy1t"]
 
@@ -43,104 +39,6 @@ glow_hdr_luminance_cap = 256.0
 [node name="1-2" type="Node2D"]
 script = ExtResource("1_yda3e")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="DebugUI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("player")]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_grxf4")
-player = NodePath("../../Player")
-
-[node name="DebugMargin" type="MarginContainer" parent="CanvasLayer/DebugUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="Panel" type="Panel" parent="CanvasLayer/DebugUI/DebugMargin"]
-custom_minimum_size = Vector2(150, 100)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DebugUI/DebugMargin/Panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SlopeDebug" type="Label" parent="CanvasLayer/DebugUI/DebugMargin/Panel/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_5qkv1")
-text = "Slope: false"
-
-[node name="SteepnessDebug" type="Label" parent="CanvasLayer/DebugUI/DebugMargin/Panel/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_5qkv1")
-text = "Steepness: 0.0"
-
-[node name="VelocityDebug" type="Label" parent="CanvasLayer/DebugUI/DebugMargin/Panel/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_5qkv1")
-text = "Velocity: "
-
-[node name="AmmoDebug" type="Label" parent="CanvasLayer/DebugUI/DebugMargin/Panel/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_5qkv1")
-text = "Slope: false"
-
-[node name="OnFloorDebug" type="Label" parent="CanvasLayer/DebugUI/DebugMargin/Panel/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_5qkv1")
-text = "Slope: false"
-
-[node name="OnWallDebug" type="Label" parent="CanvasLayer/DebugUI/DebugMargin/Panel/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_5qkv1")
-text = "Slope: false"
-
-[node name="FPS" type="Label" parent="CanvasLayer/DebugUI/DebugMargin/Panel/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_5qkv1")
-text = "Slope: false"
-
-[node name="UI" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_gko3q")
-
-[node name="UIMargin" type="MarginContainer" parent="CanvasLayer/UI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="ShellContainer" type="HBoxContainer" parent="CanvasLayer/UI/UIMargin"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-script = ExtResource("5_8jydd")
-
 [node name="SkyBackground" type="ParallaxBackground" parent="."]
 layer = -20
 
@@ -174,9 +72,8 @@ motion_mirroring = Vector2(640, 360)
 texture = SubResource("NoiseTexture2D_or1u2")
 centered = false
 
-[node name="Player" parent="." node_paths=PackedStringArray("UI") instance=ExtResource("2_7gi6t")]
+[node name="Player" parent="." instance=ExtResource("2_7gi6t")]
 position = Vector2(-31, -60)
-UI = NodePath("../CanvasLayer/UI")
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
 script = ExtResource("8_nmy1t")

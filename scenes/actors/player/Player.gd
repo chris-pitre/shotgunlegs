@@ -18,7 +18,6 @@ var ACCELERATION: int = PlayerSingleton.ACCELERATION
 var FRICTION: int = PlayerSingleton.FRICTION
 var GRAVITY: int = PlayerSingleton.GRAVITY
 var MAX_AMMO: int = PlayerSingleton.MAX_AMMO
-@export var UI: Control
 
 @onready var animatedSprite = $AnimatedSprite2D
 @onready var gunTimer = $GunTimer
@@ -34,7 +33,8 @@ var input = Vector2.ZERO
 
 func _ready() -> void:
 	animatedSprite.play("idle")
-	UI.set_max_shells(MAX_AMMO)
+	Game.UI.set_max_shells(MAX_AMMO)
+	Game.player = self
 
 func _physics_process(delta) -> void:
 	#Handling slopes
@@ -103,7 +103,7 @@ func shoot() -> void:
 		bullet.apply_impulse(randomBulletSpeed.rotated(randomAngle), Vector2.ZERO)
 	gunTimer.start(0.25)
 	AMMO -= 1
-	UI.set_shells(AMMO)
+	Game.UI.set_shells(AMMO)
 
 ## Handles if player is able to shoot and reloads gun on the ground
 func shoot_and_reload() -> void:
@@ -113,7 +113,7 @@ func shoot_and_reload() -> void:
 	if  AMMO < MAX_AMMO and is_on_floor() and gunTimer.is_stopped() and not onSlope:
 		shotgunReload.play()
 		AMMO = MAX_AMMO
-		UI.reload_shells()
+		Game.UI.reload_shells()
 
 ## Does movement based off input axis if player is on floor and not on a slope
 ## Otherwise, handles tumbling movement off a slope
@@ -131,4 +131,4 @@ func do_movement(input) -> void:
 
 func set_max_shells(x: int) -> void:
 	MAX_AMMO = x
-	UI.set_max_shells(x)
+	Game.UI.set_max_shells(x)

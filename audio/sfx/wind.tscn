@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://i24jdjwi4lyl"]
+
+[ext_resource type="AudioStream" uid="uid://bw44rk2fw0eku" path="res://audio/sfx/wind.wav" id="1_g3nu1"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_g3nu1")
+autoplay = true

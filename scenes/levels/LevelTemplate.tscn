@@ -1,0 +1,164 @@
+[gd_scene load_steps=18 format=3 uid="uid://iyu3ak5ca6wo"]
+
+[ext_resource type="Script" path="res://scenes/levels/World.gd" id="1_0508m"]
+[ext_resource type="Texture2D" uid="uid://7xq7rvoaepx" path="res://assets/environment/mountainsback.png" id="6_hih6i"]
+[ext_resource type="Texture2D" uid="uid://c30upjb7shvur" path="res://assets/environment/mountains.png" id="7_m4kcj"]
+[ext_resource type="PackedScene" uid="uid://chwsuopb2lx3s" path="res://scenes/actors/player/Tilemap.tscn" id="9_ltyc7"]
+[ext_resource type="PackedScene" uid="uid://i24jdjwi4lyl" path="res://audio/sfx/wind.tscn" id="11_3srks"]
+
+[sub_resource type="Gradient" id="Gradient_xslnd"]
+colors = PackedColorArray(0.190727, 0.162942, 0.359298, 1, 0.616116, 0.694814, 0.904034, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3a27u"]
+gradient = SubResource("Gradient_xslnd")
+width = 640
+height = 360
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_nb7gb"]
+offsets = PackedFloat32Array(0, 0.610778, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.415686, 1, 1, 1, 0.882353)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sbb4x"]
+seed = 1
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_47qqe"]
+width = 640
+height = 360
+generate_mipmaps = false
+seamless = true
+color_ramp = SubResource("Gradient_nb7gb")
+noise = SubResource("FastNoiseLite_sbb4x")
+
+[sub_resource type="Gradient" id="Gradient_0n3vw"]
+offsets = PackedFloat32Array(0, 0.610778, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.415686, 1, 1, 1, 0.882353)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0d1p3"]
+seed = 5
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2idfu"]
+width = 640
+height = 360
+generate_mipmaps = false
+seamless = true
+color_ramp = SubResource("Gradient_0n3vw")
+noise = SubResource("FastNoiseLite_0d1p3")
+
+[sub_resource type="Gradient" id="Gradient_beipe"]
+offsets = PackedFloat32Array(0, 0.610778, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.415686, 1, 1, 1, 0.882353)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y2mgu"]
+seed = 2
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u3uex"]
+width = 640
+height = 360
+generate_mipmaps = false
+seamless = true
+color_ramp = SubResource("Gradient_beipe")
+noise = SubResource("FastNoiseLite_y2mgu")
+
+[sub_resource type="Environment" id="Environment_m6gc4"]
+glow_intensity = 8.0
+glow_strength = 2.0
+glow_bloom = 0.27
+glow_blend_mode = 1
+glow_hdr_threshold = 4.0
+glow_hdr_scale = 4.0
+glow_hdr_luminance_cap = 256.0
+
+[node name="World" type="Node2D"]
+modulate = Color(0.686275, 0.686275, 0.686275, 1)
+script = ExtResource("1_0508m")
+
+[node name="SkyBackground" type="ParallaxBackground" parent="."]
+layer = -20
+
+[node name="SkyLayer" type="ParallaxLayer" parent="SkyBackground"]
+z_index = -128
+motion_scale = Vector2(0, 0)
+
+[node name="SkyBackground" type="Sprite2D" parent="SkyBackground/SkyLayer"]
+z_index = -100
+texture = SubResource("GradientTexture2D_3a27u")
+centered = false
+
+[node name="SkyLayer3" type="ParallaxLayer" parent="SkyBackground"]
+z_index = -65
+motion_scale = Vector2(0.02, 0.01)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SkyBackground/SkyLayer3"]
+position = Vector2(0, 87)
+texture = ExtResource("6_hih6i")
+centered = false
+
+[node name="SkyLayer2" type="ParallaxLayer" parent="SkyBackground"]
+z_index = -64
+motion_scale = Vector2(0.05, 0.01)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SkyBackground/SkyLayer2"]
+texture = ExtResource("7_m4kcj")
+centered = false
+
+[node name="Clouds" type="ParallaxBackground" parent="."]
+layer = -1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Clouds"]
+z_index = -1
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Clouds" type="Sprite2D" parent="Clouds/ParallaxLayer"]
+texture = SubResource("NoiseTexture2D_47qqe")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Clouds"]
+z_index = -1
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Clouds" type="Sprite2D" parent="Clouds/ParallaxLayer2"]
+texture = SubResource("NoiseTexture2D_2idfu")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Clouds"]
+z_index = -1
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Clouds" type="Sprite2D" parent="Clouds/ParallaxLayer3"]
+texture = SubResource("NoiseTexture2D_u3uex")
+centered = false
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Environment"]
+rotation = 0.240203
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_m6gc4")
+
+[node name="Tilemap" parent="Environment" instance=ExtResource("9_ltyc7")]
+modulate = Color(1.5, 1.5, 1.5, 1)
+layer_0/name = "Foreground"
+layer_1/name = "Background"
+layer_1/enabled = true
+layer_1/modulate = Color(0.796078, 0.796078, 0.796078, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = -6
+layer_1/tile_data = PackedInt32Array()
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("11_3srks")]

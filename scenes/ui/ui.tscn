@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b84ffkkrq8ndd"]
+[gd_scene load_steps=6 format=3 uid="uid://b84ffkkrq8ndd"]
 
 [ext_resource type="Script" path="res://scenes/levels/UI.gd" id="1_yophb"]
 [ext_resource type="Theme" uid="uid://b5cryc1r68bp6" path="res://assets/theme.tres" id="2_kea6p"]
 [ext_resource type="Script" path="res://scenes/levels/ShellContainer.gd" id="3_74gyb"]
+[ext_resource type="Texture2D" uid="uid://4bbxa3whaa3j" path="res://assets/uisprites/shotgunlegs.png" id="3_n45r0"]
 [ext_resource type="FontFile" uid="uid://d0ru4yoiyf31k" path="res://KarenFat.ttf" id="4_wqmom"]
 
 [node name="UI" type="CanvasLayer"]
@@ -94,6 +95,24 @@ theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
+
+[node name="MainMenu" type="Control" parent="UI/UIMargin"]
+layout_mode = 2
+
+[node name="MainMenuVBox" type="VBoxContainer" parent="UI/UIMargin/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/UIMargin/MainMenu/MainMenuVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_n45r0")
+stretch_mode = 2
 
 [node name="Shake" type="Control" parent="UI/UIMargin"]
 layout_mode = 2

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Enemy
 
-@export var HP: int = 50
+@export var MAX_HP: int = 50
 @export var PUSH_FORCE: int = 750
 
 @onready var hurtbox = $Hurtbox/CollisionShape2D
@@ -13,7 +13,7 @@ class_name Enemy
 
 var is_dead: bool = false
 var player_position: Vector2
-
+var HP: int = MAX_HP
 
 func _physics_process(delta) -> void:
 	print(position)
@@ -49,6 +49,7 @@ func death() -> void:
 	collision.set_deferred("disabled", true)
 	
 func life() -> void:
+	HP = MAX_HP
 	is_dead = false
 	sprite.visible = true
 	hurtbox.set_deferred("disabled", false)

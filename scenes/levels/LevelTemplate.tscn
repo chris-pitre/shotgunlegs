@@ -6,20 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://chwsuopb2lx3s" path="res://scenes/actors/player/Tilemap.tscn" id="9_ltyc7"]
 [ext_resource type="PackedScene" uid="uid://i24jdjwi4lyl" path="res://audio/sfx/wind.tscn" id="11_3srks"]
 
-[sub_resource type="Gradient" id="Gradient_xslnd"]
+[sub_resource type="Gradient" id="Gradient_rici3"]
 colors = PackedColorArray(0.190727, 0.162942, 0.359298, 1, 0.616116, 0.694814, 0.904034, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3a27u"]
-gradient = SubResource("Gradient_xslnd")
+gradient = SubResource("Gradient_rici3")
 width = 640
 height = 360
 fill_to = Vector2(0, 1)
 
-[sub_resource type="Gradient" id="Gradient_nb7gb"]
+[sub_resource type="Gradient" id="Gradient_5gdl6"]
 offsets = PackedFloat32Array(0, 0.610778, 1)
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.415686, 1, 1, 1, 0.882353)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_sbb4x"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iih73"]
 seed = 1
 frequency = 0.005
 
@@ -28,14 +28,14 @@ width = 640
 height = 360
 generate_mipmaps = false
 seamless = true
-color_ramp = SubResource("Gradient_nb7gb")
-noise = SubResource("FastNoiseLite_sbb4x")
+color_ramp = SubResource("Gradient_5gdl6")
+noise = SubResource("FastNoiseLite_iih73")
 
-[sub_resource type="Gradient" id="Gradient_0n3vw"]
+[sub_resource type="Gradient" id="Gradient_lcm5k"]
 offsets = PackedFloat32Array(0, 0.610778, 1)
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.415686, 1, 1, 1, 0.882353)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_0d1p3"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jgdth"]
 seed = 5
 frequency = 0.005
 
@@ -44,14 +44,14 @@ width = 640
 height = 360
 generate_mipmaps = false
 seamless = true
-color_ramp = SubResource("Gradient_0n3vw")
-noise = SubResource("FastNoiseLite_0d1p3")
+color_ramp = SubResource("Gradient_lcm5k")
+noise = SubResource("FastNoiseLite_jgdth")
 
-[sub_resource type="Gradient" id="Gradient_beipe"]
+[sub_resource type="Gradient" id="Gradient_dveow"]
 offsets = PackedFloat32Array(0, 0.610778, 1)
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.415686, 1, 1, 1, 0.882353)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_y2mgu"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5egtx"]
 seed = 2
 frequency = 0.005
 
@@ -60,8 +60,8 @@ width = 640
 height = 360
 generate_mipmaps = false
 seamless = true
-color_ramp = SubResource("Gradient_beipe")
-noise = SubResource("FastNoiseLite_y2mgu")
+color_ramp = SubResource("Gradient_dveow")
+noise = SubResource("FastNoiseLite_5egtx")
 
 [sub_resource type="Environment" id="Environment_m6gc4"]
 glow_intensity = 8.0

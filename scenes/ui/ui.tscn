@@ -1,13 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b84ffkkrq8ndd"]
+[gd_scene load_steps=6 format=3 uid="uid://b2r3y2d45ly8w"]
 
-[ext_resource type="Script" path="res://scenes/levels/UI.gd" id="1_yophb"]
+[ext_resource type="Script" path="res://scenes/ui/UI.gd" id="1_us6ex"]
 [ext_resource type="Theme" uid="uid://b5cryc1r68bp6" path="res://assets/theme.tres" id="2_kea6p"]
 [ext_resource type="Script" path="res://scenes/levels/ShellContainer.gd" id="3_74gyb"]
 [ext_resource type="Texture2D" uid="uid://4bbxa3whaa3j" path="res://assets/uisprites/shotgunlegs.png" id="3_n45r0"]
 [ext_resource type="FontFile" uid="uid://d0ru4yoiyf31k" path="res://KarenFat.ttf" id="4_wqmom"]
 
 [node name="UI" type="CanvasLayer"]
-script = ExtResource("1_yophb")
+script = ExtResource("1_us6ex")
 
 [node name="DebugUI" type="Control" parent="."]
 visible = false

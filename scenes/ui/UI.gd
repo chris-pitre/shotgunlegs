@@ -11,7 +11,8 @@ var shake_starting_frames := 4
 var shake_frames_left := 4
 var shake_frames_track := 0
 var shaking := false
-var time = 58456.0
+var time = 0.0
+var num_shells = 3
 
 @onready var shake = $UI/UIMargin/Shake
 @onready var shell_container = $UI/UIMargin/Shake/ShellContainer
@@ -48,7 +49,9 @@ func _physics_process(delta) -> void:
 
 ## Function to handle setting amount of ammo left for UI
 func set_shells(x: int) -> void:
-	shake_ui(8, 1, 16)
+	num_shells = x
+	if x < num_shells:
+		shake_ui(8, 1, 16)
 	for shell_icon in shell_container.get_children():
 		if int(shell_icon.name.right(1)) <= x:
 			shell_icon.texture = SHELL_SPRITE
@@ -81,6 +84,9 @@ func shake_ui(amp: int, freq: int, length: int) -> void:
 	shake_frames_left = length
 	shake_frames_track = 0
 	shaking = true
+
+func add_shells(x: int) -> void:
+	set_shells(num_shells + 1)
 
 func format_num_to_time(x: float) -> String:
 	var seconds = fmod(x, 60.0)

@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpyvbe8p46ek5"]
+[gd_scene load_steps=4 format=3 uid="uid://bpyvbe8p46ek5"]
 
-[ext_resource type="PackedScene" uid="uid://b84ffkkrq8ndd" path="res://scenes/ui/ui.tscn" id="1_s21y6"]
+[ext_resource type="PackedScene" uid="uid://b2r3y2d45ly8w" path="res://scenes/ui/ui.tscn" id="1_s21y6"]
 [ext_resource type="PackedScene" uid="uid://bt0q6adww2r82" path="res://scenes/scene_manager/scene_manager.tscn" id="2_667qg"]
+[ext_resource type="PackedScene" uid="uid://1a0sfp0ifqn7" path="res://scenes/prefabs/shell_pickup.tscn" id="3_qcmpa"]
 
 [node name="Main" type="Node"]
 
 [node name="UI" parent="." instance=ExtResource("1_s21y6")]
 
 [node name="SceneManager" parent="." instance=ExtResource("2_667qg")]
+
+[node name="Area2D" parent="." instance=ExtResource("3_qcmpa")]
+position = Vector2(827, -800)

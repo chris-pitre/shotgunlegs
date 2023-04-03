@@ -128,6 +128,11 @@ func do_movement(input) -> void:
 			velocity.x = move_toward(velocity.x, get_floor_normal().x * SPEED_CAP, FRICTION)
 			velocity.y = move_toward(velocity.y, 1 * SPEED_CAP, GRAVITY)
 
+## Handles giving the player shells.
+func add_shells(x: int) -> void:
+	Game.UI.add_shells(x)
+	AMMO += x
+	shotgunReload.play()
 
 func set_max_shells(x: int) -> void:
 	MAX_AMMO = x

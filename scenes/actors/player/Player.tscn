@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://1y8fkofflo3x"]
+[gd_scene load_steps=47 format=3 uid="uid://1y8fkofflo3x"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://b8cdgimmiac3l" path="res://assets/dudesprites/dudeidle2/dudeidle1.png" id="2_kgxfg"]
@@ -193,6 +193,9 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ssq5u"]
+polygon = PackedVector2Array(-4, 0, 4, 0)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 floor_max_angle = 0.872665
@@ -236,3 +239,7 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 script = ExtResource("42_pl4t0")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(0, 13)
+occluder = SubResource("OccluderPolygon2D_ssq5u")

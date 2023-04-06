@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://blc8ph64rgpwl" path="res://scenes/ui/transition.tscn" id="1_8kjqo"]
 [ext_resource type="Script" path="res://scenes/scene_manager/scene_manager.gd" id="1_g1pgx"]
-[ext_resource type="PackedScene" uid="uid://dl06vdhgkjgx6" path="res://scenes/levels/1_1.tscn" id="2_krwj3"]
+[ext_resource type="PackedScene" uid="uid://bgr6xlp68lm1p" path="res://scenes/levels/1_2.tscn" id="2_848v4"]
 
 [node name="SceneManager" type="Node2D"]
 script = ExtResource("1_g1pgx")
 
 [node name="CurrentScene" type="Node2D" parent="."]
 
-[node name="1-1" parent="CurrentScene" instance=ExtResource("2_krwj3")]
+[node name="1-2" parent="CurrentScene" instance=ExtResource("2_848v4")]
 
 [node name="Transition" parent="." instance=ExtResource("1_8kjqo")]
 

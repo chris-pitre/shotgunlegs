@@ -35,6 +35,7 @@ func _ready() -> void:
 	animatedSprite.play("idle")
 	Game.UI.set_max_shells(MAX_AMMO)
 	Game.player = self
+	PlayerSingleton.connect("moved_player", _move_player)
 
 func _physics_process(delta) -> void:
 	#Handling slopes
@@ -137,3 +138,7 @@ func add_shells(x: int) -> void:
 func set_max_shells(x: int) -> void:
 	MAX_AMMO = x
 	Game.UI.set_max_shells(x)
+
+func _move_player(player_x: int, player_y: int) -> void:
+	velocity = Vector2.ZERO
+	global_position = Vector2(player_x, player_y)
